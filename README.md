@@ -32,8 +32,8 @@ env.__setitem__(key='instacart_refresh_token', value='Your Client Refresh Token'
 # get your access token
 auth.refresh_token()
 # set start and end date
-start_date = '20240-01-01'
-end_date = '20240-01-02'
+start_date = '2024-01-01'
+end_date = '2024-01-02'
 
 # request daily report
 response = iapi.request_report(report_type='product', start_date=start_date, end_date=end_date)
