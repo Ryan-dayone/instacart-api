@@ -43,8 +43,7 @@ def get_token(authorization_code):
 
     if response.status_code == 200:
         print('Authentication token fetch successful. please add both to .env file')
-        # set the key as an environment variable
-        print(f"Access Token:{json.loads(response.text)['access_token']}")
+        # tell user to set the key as an environment variable
         print(f"Refresh Token:{json.loads(response.text)['refresh_token']}")
         exit("Please add the above to .env file")
 
