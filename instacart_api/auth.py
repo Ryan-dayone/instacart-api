@@ -42,7 +42,7 @@ def get_token(authorization_code):
     response = requests.post(url, data=payload, headers=headers)
 
     if response.status_code == 200:
-        print('Authentication token fetch successful. please add both to .env file')
+        print('Authentication token fetch successful. please add to .env file')
         # tell user to set the key as an environment variable
         print(f"Refresh Token:{json.loads(response.text)['refresh_token']}")
         exit("Please add the above to .env file")
@@ -81,5 +81,5 @@ def refresh_token():
         # set the api token as an environment variable
         env.__setitem__(key='instacart_access_token', value=str(json.loads(response.text)['access_token']))
 
-    else:
-        exit(f'{response.text}')
+    return response.text
+
