@@ -81,5 +81,5 @@ def refresh_token():
         # set the api token as an environment variable
         env.__setitem__(key='instacart_access_token', value=str(json.loads(response.text)['access_token']))
 
-    return response.text
+    return json.loads(response.text)
 
