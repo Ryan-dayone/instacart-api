@@ -15,7 +15,6 @@ pip install git+https://github.com/Ryan-dayone/instacart-api
 ```python
 from instacart_api import auth
 from instacart_api import instacart_reports_api as iapi
-import json
 from os import environ as env
 
 # application credentials (follow instructions in instacart documentation)
@@ -30,7 +29,14 @@ auth.get_token(authorization_code='Your App Authorization Code')
 env.__setitem__(key='instacart_refresh_token', value='Your Client Refresh Token')
 
 # get your access token
-auth.refresh_token()
+auth_response = auth.refresh_token()
+try:
+    response_error = auth_response['error']
+except KeyError:
+    response_error = None
+if response_error:
+    exit(auth_response['error_description'])
+
 # set start and end date
 start_date = '2024-01-01'
 end_date = '2024-01-02'
